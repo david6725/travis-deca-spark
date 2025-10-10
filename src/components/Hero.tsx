@@ -12,6 +12,8 @@ const Hero = () => {
           height="100%" 
           id="aura-spline"
         />
+        {/* Blue overlay to brighten the background */}
+        <div className="absolute inset-0 bg-primary/20 mix-blend-screen pointer-events-none" />
       </div>
 
       {/* Content */}
