@@ -53,12 +53,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Floating Shapes */}
-      <div className="absolute top-1/4 left-10 w-20 h-20 bg-primary/10 rounded-lg rotate-45 animate-float"></div>
-      <div
-        className="absolute bottom-1/4 right-10 w-16 h-16 bg-accent/10 rounded-lg rotate-12 animate-float"
-        style={{ animationDelay: "1s" }}
-      ></div>
     </section>
   );
 };
