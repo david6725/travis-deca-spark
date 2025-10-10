@@ -18,11 +18,11 @@ All colors MUST be HSL.
     --popover-foreground: 0 0% 4%;
 
     /* DECA Blue Primary */
-    --primary: 213 100% 40%;
+    --primary: 213 100% 32%;
     --primary-foreground: 0 0% 100%;
     
     /* Light blue accent */
-    --accent: 213 100% 60%;
+    --accent: 213 100% 48%;
     --accent-foreground: 0 0% 100%;
 
     /* Light gray secondary */
