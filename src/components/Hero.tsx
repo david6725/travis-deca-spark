@@ -1,24 +1,18 @@
 import { ArrowDown } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-background/80 to-background"></div>
+      {/* Spline 3D Background */}
+      <div className="spline-container absolute top-0 left-0 w-full h-full -z-10">
+        <iframe 
+          src="https://my.spline.design/herolightcopy-HWuYMA6IdNGk0VGuyvrItNGB" 
+          frameBorder="0" 
+          width="100%" 
+          height="100%" 
+          id="aura-spline"
+        />
       </div>
-
-      {/* DECA Pattern Overlay */}
-      <div className="absolute inset-0 deca-pattern opacity-30"></div>
 
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center pt-20">
