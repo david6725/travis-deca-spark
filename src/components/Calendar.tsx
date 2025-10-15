@@ -114,14 +114,14 @@ const Calendar = () => {
             ))}
           </div>
         ) : (
-          <div className="w-full">
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-              {/* Calendar - Full Width and Spacious */}
-              <Card className="xl:col-span-2">
-                <CardContent className="p-8">
+          <div className="w-full max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+              {/* Calendar - Takes 3 columns for much wider display */}
+              <Card className="lg:col-span-3">
+                <CardContent className="p-10">
                   <CalendarUI
                     mode="single"
-                    className="w-full border-0 [&_table]:w-full [&_td]:h-32 [&_th]:h-16 [&_td]:text-lg [&_th]:text-lg [&_.rdp-day]:text-lg [&_td]:p-4 [&_th]:p-4 [&_.rdp-head_cell]:font-semibold [&_.rdp-caption]:text-2xl [&_.rdp-caption]:font-bold [&_.rdp-caption]:mb-8"
+                    className="w-full border-0 [&_table]:w-full [&_td]:h-36 [&_th]:h-16 [&_td]:text-xl [&_th]:text-lg [&_.rdp-day]:text-xl [&_td]:p-5 [&_th]:p-4 [&_.rdp-head_cell]:font-semibold [&_.rdp-caption]:text-2xl [&_.rdp-caption]:font-bold [&_.rdp-caption]:mb-10"
                     modifiers={{
                       event: events.map(event => parse(event.date, "MMM dd, yyyy", new Date()))
                     }}
