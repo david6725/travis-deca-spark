@@ -8,48 +8,31 @@ import { format, parse } from "date-fns";
 const Calendar = () => {
   const [viewMode, setViewMode] = useState<"list" | "calendar">("list");
   const events = [
-    {
-      date: "Oct 15, 2025",
-      time: "3:30 PM",
-      title: "General Meeting",
-      location: "Room 204",
-      type: "meeting",
-    },
-    {
-      date: "Oct 30, 2025",
-      time: "All Day",
-      title: "Competition Registration Deadline",
-      location: "Online",
-      type: "deadline",
-    },
-    {
-      date: "Nov 8, 2025",
-      time: "3:30 PM",
-      title: "Competition Prep Workshop",
-      location: "Room 204",
-      type: "workshop",
-    },
-    {
-      date: "Nov 22, 2025",
-      time: "8:00 AM - 5:00 PM",
-      title: "District Competition",
-      location: "Austin Convention Center",
-      type: "competition",
-    },
-    {
-      date: "Dec 10, 2025",
-      time: "3:30 PM",
-      title: "Officer Elections Info Session",
-      location: "Room 204",
-      type: "meeting",
-    },
-    {
-      date: "Jan 15, 2026",
-      time: "TBD",
-      title: "State Leadership Conference",
-      location: "Dallas, TX",
-      type: "conference",
-    },
+    // October 2025
+    { date: "Oct 01, 2025", time: "TBD", title: "Trunk or Treat (Plan)", location: "TBD", type: "meeting" },
+    { date: "Oct 09, 2025", time: "3:30 PM", title: "Shark Tank Social", location: "Room 204", type: "meeting" },
+    { date: "Oct 17, 2025", time: "3:30 PM", title: "New Wink Lash Interview", location: "Room 204", type: "meeting" },
+    { date: "Oct 19, 2025", time: "All Day", title: "VBC R1", location: "TBD", type: "competition" },
+    { date: "Oct 20, 2025", time: "All Day", title: "No School / VBC R1", location: "TBD", type: "deadline" },
+    { date: "Oct 21, 2025", time: "All Day", title: "VBC R1", location: "TBD", type: "competition" },
+    { date: "Oct 22, 2025", time: "All Day", title: "VBC R1", location: "TBD", type: "competition" },
+    { date: "Oct 23, 2025", time: "3:30 PM", title: "VBC R1 - Mrs. Teresa Nolasco Guest Speaker", location: "Room 204", type: "meeting" },
+    { date: "Oct 24, 2025", time: "All Day", title: "VBC R1", location: "TBD", type: "competition" },
+    
+    // November 2025
+    { date: "Nov 06, 2025", time: "TBD", title: "Write Card for Veterans", location: "Room 204", type: "meeting" },
+    { date: "Nov 11, 2025", time: "All Day", title: "Veterans Day", location: "No School", type: "deadline" },
+    { date: "Nov 15, 2025", time: "All Day", title: "Submit All Chapter Campaigns", location: "Online", type: "deadline" },
+    { date: "Nov 20, 2025", time: "3:30 PM", title: "DECA Toy Making Social", location: "Room 204", type: "meeting" },
+    { date: "Nov 27, 2025", time: "All Day", title: "Thanksgiving - No School", location: "No School", type: "deadline" },
+    
+    // December 2025
+    { date: "Dec 01, 2025", time: "All Day", title: "DECA Chapter Campaign Due / DECA 2 Step", location: "Online", type: "deadline" },
+    { date: "Dec 05, 2025", time: "All Day", title: "SMG Ends", location: "Online", type: "deadline" },
+    { date: "Dec 12, 2025", time: "TBD", title: "Write to Texas Representatives about DECA", location: "Room 204", type: "meeting" },
+    { date: "Dec 18, 2025", time: "Half Day", title: "Half Day / Early Release", location: "School", type: "deadline" },
+    { date: "Dec 19, 2025", time: "Half Day", title: "Half Day / Early Release", location: "School", type: "deadline" },
+    { date: "Dec 25, 2025", time: "All Day", title: "Christmas - Gift Basket to Wink Lash", location: "No School", type: "meeting" },
   ];
 
   const getEventColor = (type: string) => {
@@ -131,48 +114,50 @@ const Calendar = () => {
             ))}
           </div>
         ) : (
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-8">
-              {/* Calendar */}
-              <Card className="flex-1">
-                <CardContent className="p-6">
+              {/* Calendar - Much Larger */}
+              <Card className="flex-1 lg:flex-[2]">
+                <CardContent className="p-8">
                   <CalendarUI
                     mode="single"
-                    className="rounded-md border-0"
+                    className="rounded-md border-0 w-full [&_td]:h-20 [&_th]:h-12 [&_td]:text-base [&_th]:text-base [&_.rdp-day]:text-base"
                     modifiers={{
                       event: events.map(event => parse(event.date, "MMM dd, yyyy", new Date()))
                     }}
                     modifiersClassNames={{
-                      event: "bg-primary text-primary-foreground font-bold rounded-full"
+                      event: "bg-primary/20 text-primary font-bold border-2 border-primary rounded-lg"
                     }}
                   />
                 </CardContent>
               </Card>
               
-              {/* Event List Sidebar */}
-              <div className="lg:w-80 space-y-3">
-                <h3 className="text-lg font-semibold mb-4">All Events</h3>
-                {events.map((event, index) => (
-                  <Card key={index} className={`border-l-4 ${getEventColor(event.type)}`}>
-                    <CardContent className="p-4">
-                      <h4 className="font-semibold text-sm mb-2">{event.title}</h4>
-                      <div className="space-y-1 text-xs text-muted-foreground">
-                        <div className="flex items-center gap-2">
-                          <CalendarIcon className="h-3 w-3" />
-                          <span>{event.date}</span>
+              {/* Event List Sidebar - More Spacious */}
+              <div className="lg:flex-1 space-y-4">
+                <h3 className="text-xl font-semibold mb-6">All Events</h3>
+                <div className="max-h-[600px] overflow-y-auto space-y-4 pr-2">
+                  {events.map((event, index) => (
+                    <Card key={index} className={`border-l-4 ${getEventColor(event.type)} hover:shadow-md transition-all`}>
+                      <CardContent className="p-5">
+                        <h4 className="font-semibold text-base mb-3">{event.title}</h4>
+                        <div className="space-y-2 text-sm text-muted-foreground">
+                          <div className="flex items-center gap-2">
+                            <CalendarIcon className="h-4 w-4 flex-shrink-0" />
+                            <span>{event.date}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Clock className="h-4 w-4 flex-shrink-0" />
+                            <span>{event.time}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <MapPin className="h-4 w-4 flex-shrink-0" />
+                            <span>{event.location}</span>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <Clock className="h-3 w-3" />
-                          <span>{event.time}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <MapPin className="h-3 w-3" />
-                          <span>{event.location}</span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
