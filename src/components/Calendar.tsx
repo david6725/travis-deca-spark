@@ -114,44 +114,44 @@ const Calendar = () => {
             ))}
           </div>
         ) : (
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col lg:flex-row gap-8">
-              {/* Calendar - Much Larger */}
-              <Card className="flex-1 lg:flex-[2]">
+          <div className="w-full">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+              {/* Calendar - Full Width and Spacious */}
+              <Card className="xl:col-span-2">
                 <CardContent className="p-8">
                   <CalendarUI
                     mode="single"
-                    className="rounded-md border-0 w-full [&_td]:h-20 [&_th]:h-12 [&_td]:text-base [&_th]:text-base [&_.rdp-day]:text-base"
+                    className="w-full border-0 [&_table]:w-full [&_td]:h-32 [&_th]:h-16 [&_td]:text-lg [&_th]:text-lg [&_.rdp-day]:text-lg [&_td]:p-4 [&_th]:p-4 [&_.rdp-head_cell]:font-semibold [&_.rdp-caption]:text-2xl [&_.rdp-caption]:font-bold [&_.rdp-caption]:mb-8"
                     modifiers={{
                       event: events.map(event => parse(event.date, "MMM dd, yyyy", new Date()))
                     }}
                     modifiersClassNames={{
-                      event: "bg-primary/20 text-primary font-bold border-2 border-primary rounded-lg"
+                      event: "bg-primary/20 text-primary font-bold border-2 border-primary rounded-xl relative before:content-['•'] before:absolute before:bottom-2 before:left-1/2 before:-translate-x-1/2 before:text-primary before:text-xl"
                     }}
                   />
                 </CardContent>
               </Card>
               
-              {/* Event List Sidebar - More Spacious */}
-              <div className="lg:flex-1 space-y-4">
-                <h3 className="text-xl font-semibold mb-6">All Events</h3>
-                <div className="max-h-[600px] overflow-y-auto space-y-4 pr-2">
+              {/* Event List Sidebar - More Compact */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold mb-6">Upcoming Events</h3>
+                <div className="max-h-[700px] overflow-y-auto space-y-4 pr-2">
                   {events.map((event, index) => (
                     <Card key={index} className={`border-l-4 ${getEventColor(event.type)} hover:shadow-md transition-all`}>
-                      <CardContent className="p-5">
-                        <h4 className="font-semibold text-base mb-3">{event.title}</h4>
-                        <div className="space-y-2 text-sm text-muted-foreground">
+                      <CardContent className="p-4">
+                        <h4 className="font-semibold text-sm mb-3 line-clamp-2">{event.title}</h4>
+                        <div className="space-y-2 text-xs text-muted-foreground">
                           <div className="flex items-center gap-2">
-                            <CalendarIcon className="h-4 w-4 flex-shrink-0" />
+                            <CalendarIcon className="h-3.5 w-3.5 flex-shrink-0" />
                             <span>{event.date}</span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <Clock className="h-4 w-4 flex-shrink-0" />
+                            <Clock className="h-3.5 w-3.5 flex-shrink-0" />
                             <span>{event.time}</span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <MapPin className="h-4 w-4 flex-shrink-0" />
-                            <span>{event.location}</span>
+                            <MapPin className="h-3.5 w-3.5 flex-shrink-0" />
+                            <span className="line-clamp-1">{event.location}</span>
                           </div>
                         </div>
                       </CardContent>
