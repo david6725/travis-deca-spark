@@ -4,30 +4,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const Calendar = () => {
   const events = [
     // October 2025
-    { date: "Oct 01, 2025", time: "TBD", title: "Trunk or Treat (Plan)", location: "TBD", type: "meeting" },
     { date: "Oct 09, 2025", time: "3:30 PM", title: "Shark Tank Social", location: "Room 204", type: "meeting" },
-    { date: "Oct 17, 2025", time: "3:30 PM", title: "New Wink Lash Interview", location: "Room 204", type: "meeting" },
-    { date: "Oct 19, 2025", time: "All Day", title: "VBC R1", location: "TBD", type: "competition" },
-    { date: "Oct 20, 2025", time: "All Day", title: "No School / VBC R1", location: "TBD", type: "deadline" },
-    { date: "Oct 21, 2025", time: "All Day", title: "VBC R1", location: "TBD", type: "competition" },
-    { date: "Oct 22, 2025", time: "All Day", title: "VBC R1", location: "TBD", type: "competition" },
-    { date: "Oct 23, 2025", time: "3:30 PM", title: "VBC R1 - Mrs. Teresa Nolasco Guest Speaker", location: "Room 204", type: "meeting" },
-    { date: "Oct 24, 2025", time: "All Day", title: "VBC R1", location: "TBD", type: "competition" },
     
     // November 2025
     { date: "Nov 06, 2025", time: "TBD", title: "Write Card for Veterans", location: "Room 204", type: "meeting" },
     { date: "Nov 11, 2025", time: "All Day", title: "Veterans Day", location: "No School", type: "deadline" },
     { date: "Nov 15, 2025", time: "All Day", title: "Submit All Chapter Campaigns", location: "Online", type: "deadline" },
     { date: "Nov 20, 2025", time: "3:30 PM", title: "DECA Toy Making Social", location: "Room 204", type: "meeting" },
-    { date: "Nov 27, 2025", time: "All Day", title: "Thanksgiving - No School", location: "No School", type: "deadline" },
-    
-    // December 2025
-    { date: "Dec 01, 2025", time: "All Day", title: "DECA Chapter Campaign Due / DECA 2 Step", location: "Online", type: "deadline" },
-    { date: "Dec 05, 2025", time: "All Day", title: "SMG Ends", location: "Online", type: "deadline" },
-    { date: "Dec 12, 2025", time: "TBD", title: "Write to Texas Representatives about DECA", location: "Room 204", type: "meeting" },
-    { date: "Dec 18, 2025", time: "Half Day", title: "Half Day / Early Release", location: "School", type: "deadline" },
-    { date: "Dec 19, 2025", time: "Half Day", title: "Half Day / Early Release", location: "School", type: "deadline" },
-    { date: "Dec 25, 2025", time: "All Day", title: "Christmas - Gift Basket to Wink Lash", location: "No School", type: "meeting" },
   ];
 
   const getEventColor = (type: string) => {
