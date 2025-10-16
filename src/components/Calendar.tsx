@@ -1,12 +1,7 @@
-import { useState } from "react";
-import { Calendar as CalendarIcon, Clock, MapPin, List, CalendarDays } from "lucide-react";
+import { Calendar as CalendarIcon, Clock, MapPin } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar as CalendarUI } from "@/components/ui/calendar";
-import { Button } from "@/components/ui/button";
-import { format, parse } from "date-fns";
 
 const Calendar = () => {
-  const [viewMode, setViewMode] = useState<"list" | "calendar">("list");
   const events = [
     // October 2025
     { date: "Oct 01, 2025", time: "TBD", title: "Trunk or Treat (Plan)", location: "TBD", type: "meeting" },
@@ -55,35 +50,12 @@ const Calendar = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
             Upcoming <span className="text-primary">Events</span>
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground mb-8">
+          <p className="text-base sm:text-lg text-muted-foreground">
             Mark your calendars! Stay updated on meetings, deadlines, and competitions.
           </p>
-          
-          {/* View Toggle */}
-          <div className="inline-flex rounded-lg border border-border bg-card p-1 shadow-sm">
-            <Button
-              variant={viewMode === "list" ? "default" : "ghost"}
-              size="sm"
-              onClick={() => setViewMode("list")}
-              className="gap-2"
-            >
-              <List className="h-4 w-4" />
-              List View
-            </Button>
-            <Button
-              variant={viewMode === "calendar" ? "default" : "ghost"}
-              size="sm"
-              onClick={() => setViewMode("calendar")}
-              className="gap-2"
-            >
-              <CalendarDays className="h-4 w-4" />
-              Calendar View
-            </Button>
-          </div>
         </div>
 
-        {viewMode === "list" ? (
-          <div className="max-w-4xl mx-auto grid gap-4">
+        <div className="max-w-4xl mx-auto grid gap-4">
             {events.map((event, index) => (
               <Card
                 key={index}
@@ -112,56 +84,7 @@ const Calendar = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
-        ) : (
-          <div className="w-full max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-              {/* Calendar - Takes 3 columns for much wider display */}
-              <Card className="lg:col-span-3">
-                <CardContent className="p-10">
-                  <CalendarUI
-                    mode="single"
-                    className="w-full border-0 [&_table]:w-full [&_td]:h-36 [&_th]:h-16 [&_td]:text-xl [&_th]:text-lg [&_.rdp-day]:text-xl [&_td]:p-5 [&_th]:p-4 [&_.rdp-head_cell]:font-semibold [&_.rdp-caption]:text-2xl [&_.rdp-caption]:font-bold [&_.rdp-caption]:mb-10"
-                    modifiers={{
-                      event: events.map(event => parse(event.date, "MMM dd, yyyy", new Date()))
-                    }}
-                    modifiersClassNames={{
-                      event: "bg-primary/20 text-primary font-bold border-2 border-primary rounded-xl relative before:content-['•'] before:absolute before:bottom-2 before:left-1/2 before:-translate-x-1/2 before:text-primary before:text-xl"
-                    }}
-                  />
-                </CardContent>
-              </Card>
-              
-              {/* Event List Sidebar - More Compact */}
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold mb-6">Upcoming Events</h3>
-                <div className="max-h-[700px] overflow-y-auto space-y-4 pr-2">
-                  {events.map((event, index) => (
-                    <Card key={index} className={`border-l-4 ${getEventColor(event.type)} hover:shadow-md transition-all`}>
-                      <CardContent className="p-4">
-                        <h4 className="font-semibold text-sm mb-3 line-clamp-2">{event.title}</h4>
-                        <div className="space-y-2 text-xs text-muted-foreground">
-                          <div className="flex items-center gap-2">
-                            <CalendarIcon className="h-3.5 w-3.5 flex-shrink-0" />
-                            <span>{event.date}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <Clock className="h-3.5 w-3.5 flex-shrink-0" />
-                            <span>{event.time}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <MapPin className="h-3.5 w-3.5 flex-shrink-0" />
-                            <span className="line-clamp-1">{event.location}</span>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        </div>
       </div>
     </section>
   );
